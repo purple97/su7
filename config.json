@@ -1,0 +1,10 @@
+{
+    "appName": "su7",
+    "version": "0.0.1",
+    "externals": {},
+    "include": [
+        "/three/",
+        "@sentry/"
+    ],
+    "extract-common-to-path": false
+}

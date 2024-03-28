@@ -1,0 +1,47 @@
+.__ParallaxisGrid__ {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    pointer-events: none;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    // border: 1px solid red;
+
+    .__ParallaxisGridWrap__ {
+        position: relative;
+        height: 100%;
+        width: 100%;
+    }
+
+    .__ParallaxisGridTop__,
+    .__ParallaxisGridMiddle__,
+    .__ParallaxisGridBottom__ {
+        position: absolute;
+        left: 0;
+        height: 1px;
+        width: 100%;
+        background-color: rgba(0, 255, 0, 0.7);
+        z-index: 1;
+        font-size: 12px;
+        line-height: 0;
+        text-align: right;
+
+        &>b {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    }
+
+    .__ParallaxisGridTop__ {
+        top: 20px
+    }
+
+    .__ParallaxisGridMiddle__ {
+        top: 50vh;
+    }
+
+    .__ParallaxisGridBottom__ {
+        bottom: 20px;
+    }
+}
