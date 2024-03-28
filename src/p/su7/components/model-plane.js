@@ -35,5 +35,7 @@ function CreatePlaneModel(fbx) {
 
 
 export default async function PlaneModel() {
+    // return loaderGLTF('../su7/assets/sm_carradar.glb').then(CreatePlaneModel)
     return loaderGLTF('../su7/assets/stylized_plane.glb').then(CreatePlaneModel)
+    // return loaderGLTF('../su7/assets/LittlestTokyo.glb').then(CreatePlaneModel)
 }

@@ -5,7 +5,7 @@ import {
     loaderFBX,
     loaderGLTF,
 } from '@br/three/'
-
+import GUI from '@br/three/gui'
 import PlaneModel from './model-plane'
 
 
@@ -21,9 +21,12 @@ function InitThreeScene(ele) {
     canvas.camera.position.z = 3.7;
 
     //
-    // const gui = new GUI()
-    // gui.addColor(canvas.lights[1], 'color', 'color').name('color');
-    // gui.add(canvas.lights[1], 'intensity', 0, 2, 0.01).name('设置光源强度');
+    const gui = new GUI()
+    gui.addColor(canvas.lights[0], 'color', 'color').name('设置光的颜色');
+    gui.add(canvas.lights[0], 'intensity', 0, 3, 0.01).name('设置光源强度');
+    gui.add(canvas.lights[0].position, 'x', 0, 100, 1).name('设置光源x');
+    gui.add(canvas.lights[0].position, 'y', 0, 100, 1).name('设置光源y');
+    gui.add(canvas.lights[0].position, 'z', 0, 100, 1).name('设置光源z');
     // gui.add(fbx.rotation, 'x', 0, 6, 0.001).name('设置X轴旋转');
     // gui.add(fbx.rotation, 'y', 0, 6, 0.001).name('设置Y轴旋转');
     // gui.add(fbx.rotation, 'z', -6, 6, 0.001).name('设置Z轴旋转');

@@ -26,7 +26,10 @@ class createScene {
             this.lights = lights
         } else {
             //环境光
-            const ambientLight = new THREE.HemisphereLight(0xFFFFFF, 0xFFFFFF, 1.5);
+            // const ambientLight = new THREE.HemisphereLight(0xFFFFFF, 0xFFFFFF, 1.5);
+            const ambientLight = new THREE.RectAreaLight(0xFFFFFF, 1, 100, 100);
+            ambientLight.position.set(0, 20, 1)
+            // console.table(ambientLight)
             // 添加太阳光
             const light = new THREE.DirectionalLight(0xFFFFFF, 2);
             light.position.set(0, 0, 10);
