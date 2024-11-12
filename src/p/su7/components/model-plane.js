@@ -2,6 +2,10 @@ import { Model, loaderGLTF } from '@br/three/'
 
 
 function CreatePlaneModel(fbx) {
+    if (!fbx) {
+        throw new Error("fbx 参数未定义");
+        return
+    }
     const target = new Model(fbx, {
         animaScripts: [{
             start: 200,
@@ -35,7 +39,13 @@ function CreatePlaneModel(fbx) {
 
 
 export default async function PlaneModel() {
-    // return loaderGLTF('../su7/assets/sm_carradar.glb').then(CreatePlaneModel)
-    return loaderGLTF('../su7/assets/stylized_plane.glb').then(CreatePlaneModel)
-    // return loaderGLTF('../su7/assets/LittlestTokyo.glb').then(CreatePlaneModel)
+    const path = '../su7/mesh/sm_car.glb';
+    // const path = '../su7/assets/stylized_plane.glb';
+    // const path = '../su7/assets/LittlestTokyo.glb';
+    try {
+        const fbx = await loaderGLTF(path)
+        return CreatePlaneModel(fbx);
+    } catch (error) {
+        console.error("加载模型时出错:", error);
+    }
 }

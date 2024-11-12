@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react'
+import * as THREE from 'three'
 import {
     Model,
     CreateScene,
@@ -9,17 +10,18 @@ import GUI from '@br/three/gui'
 import PlaneModel from './model-plane'
 
 
-
 function InitThreeScene(ele) {
 
     const canvas = new CreateScene({
         width: window.innerWidth,
         height: window.innerHeight
     })
+
     canvas.append(ele)
     // 改变相机距离
     canvas.camera.position.z = 3.7;
-
+    //
+    let target = null
     //
     const gui = new GUI()
     gui.addColor(canvas.lights[0], 'color', 'color').name('设置光的颜色');
@@ -27,15 +29,14 @@ function InitThreeScene(ele) {
     gui.add(canvas.lights[0].position, 'x', 0, 100, 1).name('设置光源x');
     gui.add(canvas.lights[0].position, 'y', 0, 100, 1).name('设置光源y');
     gui.add(canvas.lights[0].position, 'z', 0, 100, 1).name('设置光源z');
-    // gui.add(fbx.rotation, 'x', 0, 6, 0.001).name('设置X轴旋转');
-    // gui.add(fbx.rotation, 'y', 0, 6, 0.001).name('设置Y轴旋转');
-    // gui.add(fbx.rotation, 'z', -6, 6, 0.001).name('设置Z轴旋转');
-    // gui.add(fbx.position, 'z', -2, 2, 0.01).name('设置Z轴位置');
 
-    //
-    let target = null
-    PlaneModel(canvas).then((_target) => {
+
+    PlaneModel().then((_target) => {
         target = _target
+        // gui.add(target.rotation, 'x', 0, 6, 0.001).name('设置X轴旋转');
+        // gui.add(target.rotation, 'y', 0, 6, 0.001).name('设置Y轴旋转');
+        // gui.add(target.rotation, 'z', -6, 6, 0.001).name('设置Z轴旋转');
+        // gui.add(target.position, 'z', -2, 2, 0.01).name('设置Z轴位置');
         canvas.addModel(target)
     })
     /* 

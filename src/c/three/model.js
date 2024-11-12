@@ -1,6 +1,5 @@
 import * as THREE from 'three'
 import * as TWEEN from '@tweenjs/tween.js';
-import { ChangeMaterialEmissive, setAnimationMixer } from './utils'
 
 /* 
 * 创建模型，对传入的模型进行加工
@@ -33,10 +32,11 @@ class Model {
     static ChangeMaterialEmissive(target) {
         target.traverse(item => {
             if (item instanceof THREE.Mesh) {
-                // item.material = new THREE.MeshPhongMaterial(target.children[1].material);
-                // item.material.emissive = new THREE.Color(1, 1, 1);
-                // item.material.emissiveIntenaity = 1;
-                // item.material.emissiveMap = item.material.map;
+                // item.material.color.set(0xffffff); // 设置新的颜色
+                item.material.metalness = 0; // 设置金属感
+                item.material.roughness = 0; // 设置粗糙度
+                // item.material.specular = new THREE.Color(0x111111);
+                // item.material.wireframe = true;
                 item.castShadow = true;
                 item.receiveShadow = true;
             }

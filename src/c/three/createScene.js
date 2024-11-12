@@ -63,6 +63,7 @@ class createScene {
     }
 
     addModel(model) {
+        if (!model) return
         this.models.push(model)
         this.scene.add(model)
     }
