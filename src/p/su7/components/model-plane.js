@@ -39,7 +39,7 @@ function CreatePlaneModel(fbx) {
 
 
 export default async function PlaneModel() {
-    const path = '../su7/mesh/sm_car.glb';
+    const path = '../su7/assets/sm_carradar.glb';
     // const path = '../su7/assets/stylized_plane.glb';
     // const path = '../su7/assets/LittlestTokyo.glb';
     try {

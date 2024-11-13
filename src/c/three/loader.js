@@ -20,8 +20,9 @@ function CreateDRACO(loader, path) {
 */
 export async function loaderGLTF(url) {
     const loader = new GLTFLoader();
-    CreateDRACO(loader, '/src/p/su7/assets/')
+    // CreateDRACO(loader, '/src/p/su7/assets/')
     return new Promise((resolve, reject) => loader.load(url, (res) => {
+        console.log('----')
         res.scene.animations = res.animations;
         return resolve(res.scene)
     }, undefined, reject))
