@@ -1,3 +1,4 @@
+import * as THREE from 'three';
 import { Model, loaderGLTF } from '@br/three/'
 
 
@@ -6,15 +7,22 @@ function CreatePlaneModel(fbx) {
         throw new Error("fbx 参数未定义");
         return
     }
-    const target = new Model(fbx, {
-        animaScripts: [{
+    const existAnimation = Array.isArray(fbx.animations) && fbx.animations.lenth > 0
+
+    const options = {}
+
+
+    if (existAnimation) {
+        options.animaScripts = [{
             start: 200,
             end: 1200,
             rotation: { x: 0.5, y: 5.6, z: [0, 0.3, 0] },
             position: { y: [0, -0.3, 0] },
             scale: { x: [1, 1.2, 1], y: [1, 1.2, 1] }
         }]
-    });
+    }
+
+    const target = new Model(fbx, options);
 
     // 设置模型大小
     target.scale.set(1, 1, 1);
@@ -22,24 +30,26 @@ function CreatePlaneModel(fbx) {
     target.rotation.x = 0.4
     target.rotation.y = 6.8
 
-    // 动态添加动画脚本
-    target.addAS({
-        start: 1900,
-        end: 2900,
-        rotation: { x: 0.3, y: 7.7, z: [-0.2, -0.9, 0] },
-        position: { x: [0.1, 0.3], y: [-0.1, -0.4, 0] }
-    }).addAS({
-        start: 2900,
-        end: 4100,
-        position: { x: -0.4 }
-    })
+    if (existAnimation) {
+        // 动态添加动画脚本
+        target.addAS({
+            start: 1900,
+            end: 2900,
+            rotation: { x: 0.3, y: 7.7, z: [-0.2, -0.9, 0] },
+            position: { x: [0.1, 0.3], y: [-0.1, -0.4, 0] }
+        }).addAS({
+            start: 2900,
+            end: 4100,
+            position: { x: -0.4 }
+        })
+    }
 
     return target
 }
 
 
 export default async function PlaneModel() {
-    const path = '../su7/assets/sm_carradar.glb';
+    const path = '../su7/assets/sm/sm_car.gltf';
     // const path = '../su7/assets/stylized_plane.glb';
     // const path = '../su7/assets/LittlestTokyo.glb';
     try {

@@ -11,22 +11,27 @@ class Model {
         this.target = target
         this.opstion = opstion
         this.setModel(this.target)
-        this.clock = new THREE.Clock();
-        this.animationScriptMark = [];
-        if (opstion.animaScripts) {
-            this.addAnimaScript(opstion.animaScripts)
+        this.existAnimation = Array.isArray(target.animations) && target.animations.lenth > 0
+        if (this.existAnimation) {
+            this.clock = new THREE.Clock();
+            this.animationScriptMark = [];
+            if (opstion.animaScripts) {
+                this.addAnimaScript(opstion.animaScripts)
+                this.target.addAS = this.target.addAnimaScript = this.addAnimaScript.bind(this)
+                this.target.runAnimaScript = this.runAnimaScript.bind(this)
+            }
+
         }
         this.target.update = () => {
-            this.target.mixer.update(this.clock.getDelta());
+            if (this.existAnimation) this.target.mixer.update(this.clock.getDelta());
         }
-        this.target.addAS = this.target.addAnimaScript = this.addAnimaScript.bind(this)
-        this.target.runAnimaScript = this.runAnimaScript.bind(this)
+
         return this.target
     }
 
     setModel(target) {
         Model.ChangeMaterialEmissive(target)
-        Model.setAnimationMixer(target)
+        this.existAnimation && Model.setAnimationMixer(target)
     }
 
     static ChangeMaterialEmissive(target) {
