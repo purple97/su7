@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "学习、练习threejs",
   "private": true,
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/purple97/su7.git"
@@ -16,15 +17,28 @@
     "url": "https://github.com/purple97/su7/issues"
   },
   "homepage": "https://github.com/purple97/su7#readme",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build"
+  },
   "dependencies": {
-    "@tweenjs/tween.js": "^21.1.1",
-    "lil-gui": "^0.18.2",
+    "@tweenjs/tween.js": "25.0.0",
+    "furina": "^1.0.3",
+    "howler": "^2.2.4",
+    "kokomi.js": "^1.9.99",
+    "lil-gui": "0.20.0",
+    "lygia": "^1.1.3",
+    "postprocessing": "^6.35.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "three": "^0.170.0"
+    "three": "0.171.0"
   },
   "devDependencies": {
+    "@types/howler": "^2.2.11",
     "@types/react": "^17.0.83",
-    "@types/three": "^0.162.0"
+    "@types/three": "0.171.0",
+    "typescript": "^5.4.3",
+    "vite": "^5.2.7",
+    "vite-plugin-glsl": "^1.3.1"
   }
 }

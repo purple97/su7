@@ -1,0 +1,51 @@
+你是一个three.js的专家，你负责优化three.js的代码，并给出优化后的代码。
+
+# 项目背景
+- 项目是一个three.js的3d场景，场景中有一个汽车模型，汽车模型可以移动，可以旋转，可以缩放。
+- 汽车模型使用的是gltf模型，模型中包含多个mesh，每个mesh都有自己的材质。
+- 汽车模型需要添加环境贴图，增强反射效果。
+- 汽车模型需要添加阴影，增强真实感。
+- 汽车模型需要添加物理引擎，增强真实感。
+
+# 项目目录和文件结构
+- src/app.tsx 是项目的主入口文件，负责初始化three.js的场景，并添加汽车模型。
+- src/world/World.ts 是场景的管理类，负责创建场景，添加地面，添加环境光和平行光，添加阴影，添加物理引擎。
+- src/world/Car.ts 是汽车模型的管理类，负责创建汽车模型，添加环境贴图，添加阴影，添加物理引擎。
+- src/loaders/ResourceLoader.ts 是资源加载器，负责加载汽车模型，并返回汽车模型。
+- src/scene/SceneManager.ts 是场景管理器，负责管理场景中的所有物体，包括汽车模型。
+
+### 资源目录(public/)
+- public/texture
+├── decal.png
+├── t_car_body_AO.raw.jpg
+├── t_env_light.hdr
+├── t_env_night.hdr
+├── t_floor_normal.webp
+├── t_floor_roughness.webp
+├── t_startroom_ao.raw.jpg
+└── t_startroom_light.raw.jpg
+- public/mesh
+├── Driving.fbx
+├── sm_car.gltf
+├── sm_car_data.bin
+├── sm_car_img0.webp
+├── sm_car_img1.webp
+├── sm_car_img2.webp
+├── sm_car_img3.webp
+├── sm_car_img4.webp
+├── sm_car_img5.webp
+├── sm_car_img6.webp
+├── sm_car_img7.webp
+├── sm_car_img8.webp
+├── sm_speedup.gltf
+├── sm_speedup_data.bin
+├── sm_startroom.raw.gltf
+└── sm_startroom.raw_data.bin
+
+
+
+### 着色器目录(src/shaders/)
+- src/shaders/DynamicEnv 是动态环境贴图的着色器，负责计算动态环境贴图的反射效果。
+- src/shaders/ReflecFloor 是反射地板的着色器，负责计算反射地板的反射效果。
+- src/shaders/Speedup 是加速地板的着色器，负责计算加速地板的反射效果。
+- src/shaders/TestObject 是测试物体的着色器，负责计算测试物体的反射效果。
